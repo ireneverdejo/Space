@@ -31,3 +31,17 @@ public class MenuPrincipal extends JFrame {
         setVisible(true);
     }
 }
+botoJugar.addActionListener(e -> {
+
+JFrame finestraJoc = new JFrame("Joc");
+
+PantallaJoc joc = new PantallaJoc();
+
+    finestraJoc.add(joc);
+    finestraJoc.setSize(800, 600);
+    finestraJoc.setLocationRelativeTo(null);
+    finestraJoc.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    finestraJoc.setVisible(true);
+
+dispose();
+});
