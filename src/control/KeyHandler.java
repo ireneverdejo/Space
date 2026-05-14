@@ -32,3 +32,11 @@ public class KeyHandler implements KeyListener {
         if(code == KeyEvent.VK_RIGHT) right = false;
     }
 }
+if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+        projectils.add(new Projectil(playerX, playerY));
+        }
+Timer timer = new Timer(16, e -> {
+    updateGame();
+    checkCollisions();
+    repaint();
+});

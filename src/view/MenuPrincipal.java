@@ -45,3 +45,9 @@ PantallaJoc joc = new PantallaJoc();
 
 dispose();
 });
+JButton botoRanking = new JButton("RANKING");
+
+botoRanking.addActionListener(e -> {
+        new RankingView();
+});
+panel.add(botoRanking, BorderLayout.NORTH);
