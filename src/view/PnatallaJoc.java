@@ -26,6 +26,8 @@ public class PantallaJoc extends JPanel {
     }
 }
 
+
+
 private KeyHandler keyHandler = new KeyHandler();
 addKeyListener(keyHandler);
 setFocusable(true);
