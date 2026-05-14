@@ -27,3 +27,28 @@ public class UsuariDAO {
         }
     }
 }
+public List<String[]> obtenirRanking() {
+
+    List<String[]> ranking = new ArrayList<>();
+
+    String sql = "SELECT nom, puntuacio, temps_joc FROM usuaris ORDER BY puntuacio DESC";
+
+    try (Connection conn = DBConnection.getConnection();
+         PreparedStatement ps = conn.prepareStatement(sql);
+         ResultSet rs = ps.executeQuery()) {
+
+        while (rs.next()) {
+
+            String nom = rs.getString("nom");
+            String punts = String.valueOf(rs.getInt("puntuacio"));
+            String temps = String.valueOf(rs.getInt("temps_joc"));
+
+            ranking.add(new String[]{nom, punts, temps});
+        }
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+    return ranking;
+}
