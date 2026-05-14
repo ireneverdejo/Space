@@ -3,6 +3,12 @@ package view;
 import javax.swing.*;
 import java.awt.*;
 
+Partida partida;
+List<Enemic> enemics;
+List<Projectil> projectils;
+List<Enemic> enemics = new ArrayList<>();
+List<Projectil> projectils = new ArrayList<>();
+
 public class PantallaJoc extends JPanel {
 
     private int x = 350;
@@ -45,8 +51,7 @@ Timer timer = new Timer(16, e -> {
         enemics.add(new Enemic((int)(Math.random() * 750), 0));
     }
 });
-List<Enemic> enemics = new ArrayList<>();
-List<Projectil> projectils = new ArrayList<>();
+
 private void updateGame() {
 
     for (Enemic e : enemics) {
@@ -74,5 +79,16 @@ private void checkCollisions() {
                 break;
             }
         }
+    }
+}
+public void updateGame() {
+
+    for (Enemic e : enemics) e.update();
+    for (Projectil p : projectils) p.update();
+
+    CollisionManager.checkCollisions(enemics, projectils);
+
+    if (Math.random() < 0.02) {
+        enemics.add(new Enemic((int)(Math.random()*750), 0));
     }
 }
